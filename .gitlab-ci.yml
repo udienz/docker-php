@@ -18,7 +18,6 @@ before_script:
 build-buster-7.1:
  stage: build
  script:
-  - docker pull udienz/php:buster-7.1
   - docker build -t php-buster-7.1 $CI_PROJECT_DIR/buster-7.1
   - docker tag php-buster-7.1 udienz/php:buster-7.1
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
@@ -27,7 +26,6 @@ build-buster-7.1:
 build-buster-7.2:
  stage: build
  script:
-  - docker pull udienz/php:buster-7.2
   - docker build -t php-buster-7.2 $CI_PROJECT_DIR/buster-7.2
   - docker tag php-buster-7.2 udienz/php:buster-7.2
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
@@ -36,7 +34,6 @@ build-buster-7.2:
 build-buster-7.3:
  stage: build
  script:
-  - docker pull udienz/php:buster-7.3
   - docker build -t php-buster-7.3 $CI_PROJECT_DIR/buster-7.3
   - docker tag php-buster-7.3 udienz/php:buster-7.3
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
@@ -45,7 +42,6 @@ build-buster-7.3:
 build-buster-7.4:
  stage: build
  script:
-  - docker pull udienz/php:buster-7.4
   - docker build -t php-buster-7.4 $CI_PROJECT_DIR/buster-7.4
   - docker tag php-buster-7.4 udienz/php:buster-7.4
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"
@@ -54,7 +50,6 @@ build-buster-7.4:
 build-buster-8.0:
  stage: build
  script:
-  - docker pull udienz/php:buster-8.0
   - docker build -t php-buster-8.0 $CI_PROJECT_DIR/buster-8.0
   - docker tag php-buster-8.0 udienz/php:buster-8.0
   - docker login -u="$DOCKERUSER" -p="$DOCKERPASS"

@@ -33,7 +33,6 @@ do
 build-$release-$version:
  stage: build
  script:
-  - docker pull udienz/php:$release-$version
   - docker build -t php-$release-$version \$CI_PROJECT_DIR/$release-$version
   - docker tag php-$release-$version udienz/php:$release-$version
   - docker login -u=\"\$DOCKERUSER\" -p=\"\$DOCKERPASS\"
