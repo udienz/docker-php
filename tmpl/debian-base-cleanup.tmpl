@@ -1,0 +1,16 @@
+RUN set -ex; \
+	\
+	apt-get update; \
+	apt-get remove -y \
+	libjpeg-dev libfreetype6-dev \
+	libpng-dev libbz2-dev libcurl4-gnutls-dev libxml2-dev \
+	libenchant-dev libsnmp-dev libgmp-dev libicu-dev \
+	libc-client-dev libkrb5-dev libmagickwand-dev  ghostscript \
+	libgdsii-dev libldap2-dev libmcrypt-dev unzip libiodbc2-dev \
+	libxml2-dev libxmlrpc-epi-dev libxslt1-dev libxmltok1-dev \
+	freetds-dev libpq-dev libsqlite3-dev libpspell-dev  \
+	libedit-dev librecode-dev libtidy-dev \
+	; \
+	apt-get autoclean ; \
+	apt-get autoremove; \
+	rm -rf /var/lib/apt/lists/*
