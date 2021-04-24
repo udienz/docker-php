@@ -8,14 +8,21 @@ OUT=$BASE/.gitlab-ci.yml
 rm -f $OUT
 cat > $OUT  <<EOF
 image: docker:latest
+
 services:
- - docker:dind
+ - docker:18.09.7-dind
+
+variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+
 stages:
  - build
- - test
  - deploy
+
 before_script:
  - docker info
+
 EOF
 
 for release in $RELEASE
