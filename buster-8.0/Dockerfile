@@ -1,4 +1,4 @@
-#Created at Sat 24 Apr 2021 05:00:20 PM UTC
+#Created at Sat 24 Apr 2021 05:04:39 PM UTC
 FROM php:8.0-apache-buster
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
@@ -37,13 +37,19 @@ RUN set -ex; \
     docker-php-ext-install -j$(nproc) pdo_oci; \
     ldconfig
 
+RUN echo "installing imap module" ; \
+	docker-php-ext-configure imap \
+            --with-kerberos \
+            --with-imap-ssl ; \
+	 docker-php-ext-install imap
+
 RUN set -ex ;\
 	 ln -s /usr/lib/x86_64-linux-gnu/libsybdb.so /usr/lib/libsybdb.so; \
 	 docker-php-ext-install -j$(nproc) pdo_dblib
 
 RUN set -ex ;\
 	docker-php-ext-install -j$(nproc) bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo ftp \
-	gettext gmp hash iconv imap gd \
+	gettext gmp hash iconv gd \
 	intl json ldap mbstring mcrypt mysqli opcache pcntl pdo pdo_dblib pdo_mysql \
 	pdo_pgsql pdo_sqlite pgsql phar posix pspell readline recode session shmop simplexml \
 	snmp soap sockets sysvmsg sysvsem sysvshm tidy tokenizer wddx xml xmlrpc xsl zip
