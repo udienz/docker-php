@@ -1,4 +1,4 @@
-#Created at Sat 24 Apr 2021 04:32:48 PM UTC
+#Created at Sat 24 Apr 2021 05:00:20 PM UTC
 FROM php:7.2-apache-buster
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
@@ -13,22 +13,9 @@ RUN set -ex; \
 	libgdsii-dev libldap2-dev libmcrypt-dev unzip libiodbc2-dev \
 	libxml2-dev libxmlrpc-epi-dev libxslt1-dev libxmltok1-dev \
 	freetds-dev libpq-dev libsqlite3-dev libpspell-dev  \
-	libedit-dev librecode-dev libtidy-dev \
+	libedit-dev librecode-dev libtidy-dev wget \
 	; \
 	rm -rf /var/lib/apt/lists/*
-RUN set -ex ;\
-    docker-php-ext-configure gd \
-		--with-freetype-dir=/usr/include/ \
-		--with-jpeg-dir=/usr/include/ \
-		--with-png-dir=/usr/include/ ;\
-		docker-php-ext-install -j$(nproc) \
-		gd
-
-RUN set -ex ;\
-	docker-php-ext-configure imap \
-            --with-kerberos \
-            --with-imap-ssl ; \
-	 docker-php-ext-install -j$(nproc) imap
 	 
 RUN mkdir /opt/oracle ;\
     cd /opt/oracle; \
@@ -55,7 +42,8 @@ RUN set -ex ;\
 	 docker-php-ext-install -j$(nproc) pdo_dblib
 
 RUN set -ex ;\
-	docker-php-ext-install -j$(nproc) bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo ftp gettext gmp hash iconv \
+	docker-php-ext-install -j$(nproc) bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo ftp \
+	gettext gmp hash iconv imap gd \
 	intl json ldap mbstring mcrypt mysqli opcache pcntl pdo pdo_dblib pdo_mysql \
 	pdo_pgsql pdo_sqlite pgsql phar posix pspell readline recode session shmop simplexml \
 	snmp soap sockets sysvmsg sysvsem sysvshm tidy tokenizer wddx xml xmlrpc xsl zip
@@ -73,7 +61,7 @@ RUN set -ex; \
 	libedit-dev librecode-dev libtidy-dev \
 	; \
 	apt-get autoclean ; \
-	apt-get autoremove; \
+	apt-get autoremove -y; \
 	rm -rf /var/lib/apt/lists/*
 RUN a2enmod rewrite expires
 
