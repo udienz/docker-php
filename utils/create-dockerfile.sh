@@ -14,8 +14,10 @@ do
 FROM php:$version-apache-$release
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
+
+
 `cat $BASE/tmpl/debian-base-first.tmpl`
-`cat $BASE/tmpl/debian-base-content.tmpl`
+`cat $BASE/tmpl/debian-base-content-$version.tmpl`
 `cat $BASE/tmpl/debian-base-cleanup.tmpl`
 `cat $BASE/tmpl/debian-base-last.tmpl`
 

@@ -1,6 +1,8 @@
-#Created at Sat 24 Apr 2021 05:04:38 PM UTC
+#Created at Sun 25 Apr 2021 01:59:11 PM UTC
 FROM php:7.2-apache-buster
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
+
+
 
 RUN set -ex; \
 	\
@@ -13,7 +15,7 @@ RUN set -ex; \
 	libgdsii-dev libldap2-dev libmcrypt-dev unzip libiodbc2-dev \
 	libxml2-dev libxmlrpc-epi-dev libxslt1-dev libxmltok1-dev \
 	freetds-dev libpq-dev libsqlite3-dev libpspell-dev  \
-	libedit-dev librecode-dev libtidy-dev wget \
+	libedit-dev librecode-dev libtidy-dev wget libzip-dev libonig-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*
 	 
@@ -35,7 +37,7 @@ RUN set -ex; \
     docker-php-ext-install -j$(nproc) oci8 ;\ 
 		docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/instantclient_21_1,12.1 ;\
     docker-php-ext-install -j$(nproc) pdo_oci; \
-    ldconfig
+    ldconfig -v
 
 RUN echo "installing imap module" ; \
 	docker-php-ext-configure imap \
@@ -50,7 +52,7 @@ RUN set -ex ;\
 RUN set -ex ;\
 	docker-php-ext-install -j$(nproc) bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo ftp \
 	gettext gmp hash iconv gd \
-	intl json ldap mbstring mcrypt mysqli opcache pcntl pdo pdo_dblib pdo_mysql \
+	intl json ldap mbstring mysqli opcache pcntl pdo pdo_mysql \
 	pdo_pgsql pdo_sqlite pgsql phar posix pspell readline recode session shmop simplexml \
 	snmp soap sockets sysvmsg sysvsem sysvshm tidy tokenizer wddx xml xmlrpc xsl zip
 RUN set -ex; \
@@ -64,7 +66,7 @@ RUN set -ex; \
 	libgdsii-dev libldap2-dev libmcrypt-dev unzip libiodbc2-dev \
 	libxml2-dev libxmlrpc-epi-dev libxslt1-dev libxmltok1-dev \
 	freetds-dev libpq-dev libsqlite3-dev libpspell-dev  \
-	libedit-dev librecode-dev libtidy-dev \
+	libedit-dev librecode-dev libtidy-dev libzip-dev libonig-dev \
 	; \
 	apt-get autoclean ; \
 	apt-get autoremove -y; \
