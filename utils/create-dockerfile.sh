@@ -10,7 +10,6 @@ do
 	do
 		mkdir $BASE/$release-$version -p
 		cat > $BASE/$release-$version/Dockerfile <<EOF
-#Created at $(date -u)
 FROM php:$version-apache-$release
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 

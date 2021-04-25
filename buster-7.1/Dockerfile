@@ -1,4 +1,3 @@
-#Created at Sun 25 Apr 2021 01:59:11 PM UTC
 FROM php:7.1-apache-buster
 MAINTAINER Mahyuddin Susanto <udienz@gmail.com>
 
@@ -15,7 +14,7 @@ RUN set -ex; \
 	libgdsii-dev libldap2-dev libmcrypt-dev unzip libiodbc2-dev \
 	libxml2-dev libxmlrpc-epi-dev libxslt1-dev libxmltok1-dev \
 	freetds-dev libpq-dev libsqlite3-dev libpspell-dev  \
-	libedit-dev librecode-dev libtidy-dev wget libzip-dev libonig-dev \
+	libedit-dev librecode-dev libtidy-dev wget libzip-dev libonig-dev libaio-dev\
 	; \
 	rm -rf /var/lib/apt/lists/*
 	 
