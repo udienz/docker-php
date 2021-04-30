@@ -31,7 +31,7 @@ RUN set -ex ;\
 
 RUN set -ex ;\
 	docker-php-ext-install -j$(nproc) bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo ftp \
-	gettext gmp hash iconv gd \
+	gettext gmp iconv gd \
 	intl json ldap mbstring mysqli opcache pcntl pdo pdo_mysql \
 	pdo_pgsql pdo_sqlite pgsql phar posix pspell readline session shmop simplexml \
 	snmp soap sockets sysvmsg sysvsem sysvshm tidy tokenizer xml xmlrpc xsl zip
